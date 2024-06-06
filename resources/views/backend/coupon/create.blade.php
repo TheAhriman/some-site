@@ -3,13 +3,13 @@
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">Add Coupon</h5>
+    <h5 class="card-header">Добавить купон</h5>
     <div class="card-body">
       <form method="post" action="{{route('coupon.store')}}">
         {{csrf_field()}}
         <div class="form-group">
-        <label for="inputTitle" class="col-form-label">Coupon Code <span class="text-danger">*</span></label>
-        <input id="inputTitle" type="text" name="code" placeholder="Enter Coupon Code"  value="{{old('code')}}" class="form-control">
+        <label for="inputTitle" class="col-form-label">Код купона <span class="text-danger">*</span></label>
+        <input id="inputTitle" type="text" name="code" placeholder="Введите код купона"  value="{{old('code')}}" class="form-control">
         @error('code')
         <span class="text-danger">{{$message}}</span>
         @enderror
@@ -18,8 +18,8 @@
         <div class="form-group">
             <label for="type" class="col-form-label">Type <span class="text-danger">*</span></label>
             <select name="type" class="form-control">
-                <option value="fixed">Fixed</option>
-                <option value="percent">Percent</option>
+                <option value="fixed">Фиксированный</option>
+                <option value="percent">Процент</option>
             </select>
             @error('type')
             <span class="text-danger">{{$message}}</span>
@@ -27,26 +27,26 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTitle" class="col-form-label">Value <span class="text-danger">*</span></label>
-            <input id="inputTitle" type="number" name="value" placeholder="Enter Coupon value"  value="{{old('value')}}" class="form-control">
+            <label for="inputTitle" class="col-form-label">Значение <span class="text-danger">*</span></label>
+            <input id="inputTitle" type="number" name="value" placeholder="Введите значение купона"  value="{{old('value')}}" class="form-control">
             @error('value')
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         
         <div class="form-group">
-          <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
+          <label for="status" class="col-form-label">Статус <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="active">Активный</option>
+              <option value="inactive">Не активный</option>
           </select>
           @error('status')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group mb-3">
-          <button type="reset" class="btn btn-warning">Reset</button>
-           <button class="btn btn-success" type="submit">Submit</button>
+          <button type="reset" class="btn btn-warning">Сброс</button>
+           <button class="btn btn-success" type="submit">Готов</button>
         </div>
       </form>
     </div>
@@ -65,7 +65,7 @@
 
     $(document).ready(function() {
     $('#description').summernote({
-      placeholder: "Write short description.....",
+      placeholder: "Напишите короткое описание.....",
         tabsize: 2,
         height: 150
     });

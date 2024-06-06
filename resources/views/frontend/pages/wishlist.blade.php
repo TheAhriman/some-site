@@ -8,8 +8,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="{{('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="javascript:void(0);">Wishlist</a></li>
+							<li><a href="{{('home')}}">Главная<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="javascript:void(0);">Избранное</a></li>
 						</ul>
 					</div>
 				</div>
@@ -27,10 +27,10 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>PRODUCT</th>
-								<th>NAME</th>
-								<th class="text-center">TOTAL</th> 
-								<th class="text-center">ADD TO CART</th> 
+								<th>Товар</th>
+								<th>Название</th>
+								<th class="text-center">Итого</th> 
+								<th class="text-center">Добавить в корзину</th> 
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
@@ -54,7 +54,7 @@
 							@else 
 								<tr>
 									<td class="text-center">
-										There are no any wishlist available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
+										Нету избранных товаров. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
 
 									</td>
 								</tr>
@@ -78,7 +78,7 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
+						<h4>Бесплатная доставка</h4>
 						<p>Orders over $100</p>
 					</div>
 					<!-- End Single Service -->

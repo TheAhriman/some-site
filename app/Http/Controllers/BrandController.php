@@ -32,23 +32,22 @@ class BrandController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,[
             'title'=>'string|required',
         ]);
-        $data=$request->all();
-        $slug=Str::slug($request->title);
-        $count=Brand::where('slug',$slug)->count();
-        if($count>0){
-            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
+        $data = $request->all();
+        $slug = Str::slug($request->title);
+        $count = Brand::where('slug',$slug)->count();
+        if ($count>0) {
+            $slug = $slug.'-'.date('ymdis').'-'.rand(0,999);
         }
-        $data['slug']=$slug;
+        $data['slug'] = $slug;
         // return $data;
-        $status=Brand::create($data);
-        if($status){
+        $status = Brand::create($data);
+        if ($status) {
             request()->session()->flash('success','Brand successfully created');
         }
         else{
@@ -98,7 +97,7 @@ class BrandController extends Controller
             'title'=>'string|required',
         ]);
         $data=$request->all();
-       
+
         $status=$brand->fill($data)->save();
         if($status){
             request()->session()->flash('success','Brand successfully updated');

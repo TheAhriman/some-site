@@ -6,20 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
 {
-    protected $fillable=['code','type','value','status'];
+    protected $fillable = [
+        'code',
+        'type',
+        'value',
+        'status'
+    ];
 
-    public static function findByCode($code){
-        return self::where('code',$code)->first();
+    public static function findByCode($code)
+    {
+        return self::query()->where('code',$code)->first();
     }
-    public function discount($total){
-        if($this->type=="fixed"){
-            return $this->value;
-        }
-        elseif($this->type=="percent"){
-            return ($this->value /100)*$total;
-        }
-        else{
-            return 0;
+    public function discount($total)
+    {
+        switch($this->type) {
+            case 'fixed':
+                return $this->value;
+            case 'percent':
+                return ($this->value / 100) * 100;
+            default:
+                return 0;
         }
     }
 }

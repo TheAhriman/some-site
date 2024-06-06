@@ -13,7 +13,7 @@
     <!-- Dropdown - Messages -->
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
         <h6 class="dropdown-header">
-        Message Center
+        Центр сообщений
         </h6>
         <div id="message-items">
             @foreach(Helper::messageList() as $message)
@@ -43,12 +43,12 @@
                 <div class="status-indicator bg-success"></div>
             </div>
             <div>
-                <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                <div class="text-truncate">Вопрос о хорошести. Прошу адекватно оценивать, ибо статус репутации определяет, какова ваша настоящая ценность...</div>
+                <div class="small text-gray-500">Анонимный пользователь · 14 дней назад</div>
             </div>
             </a> --}}
         </div>
-        <a class="dropdown-item text-center small text-gray-500" href="{{route('message.index')}}">Read More Messages</a>
+        <a class="dropdown-item text-center small text-gray-500" href="{{route('message.index')}}">Читать больше сообщений</a>
     </div>
 </div>
 
