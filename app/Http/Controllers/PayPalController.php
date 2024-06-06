@@ -41,7 +41,27 @@ class PayPalController extends Controller
                 return redirect()->away($links['href']);
             }
         }
-                foreach($data['items'] as $item) {
+        dd($response);
+
+        dd($cart);
+        // return $cart;
+        $data['items'] = array_map(function ($item) use($cart) {
+            $name=Product::where('id',$item['product_id'])->pluck('title');
+            return [
+                'name' =>$name ,
+                'price' => $item['price'],
+                'desc'  => 'Thank you for using paypal',
+                'qty' => $item['quantity']
+            ];
+        }, $cart);
+
+        $data['invoice_id'] ='ORD-'.strtoupper(uniqid());
+        $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
+        $data['return_url'] = route('payment.success');
+        $data['cancel_url'] = route('payment.cancel');
+
+        $total = 0;
+        foreach($data['items'] as $item) {
             $total += $item['price']*$item['qty'];
         }
 
@@ -78,6 +98,7 @@ class PayPalController extends Controller
     /**
      * Responds with a welcome message with instructions
      *
+     * @return \Illuminate\Http\Response
      */
     public function success(Request $request)
     {

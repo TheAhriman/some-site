@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+<!-- @extends('backend.layouts.master')
 
 @section('main-content')
 
@@ -33,4 +33,4 @@
     </div>
 </div>
 
-@endsection
+@endsection -->

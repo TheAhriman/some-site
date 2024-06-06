@@ -15,20 +15,20 @@
 								$settings=DB::table('settings')->get();
 							@endphp
 							<p class="text">@foreach($settings as $data) {{$data->short_des}} @endforeach</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
+							<p class="call">Есть вопросы? Звоните нам 24/7<span><a href="tel:123456789">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Information</h4>
+							<h4>Информация</h4>
 							<ul>
-								<li><a href="{{route('about-us')}}">About Us</a></li>
-								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="{{route('contact')}}">Contact Us</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="{{route('about-us')}}">О нас</a></li>
+								<li><a href="#">Часто задаваемые вопросы</a></li>
+								<li><a href="#">Условия и положения</a></li>
+								<li><a href="{{route('contact')}}">Контакты</a></li>
+								<li><a href="#">Помощь</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -36,13 +36,13 @@
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Customer Service</h4>
+							<h4>Служба поддержки клиентов</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Способы оплаты</a></li>
+								<li><a href="#">Возврат денег</a></li>
+								<li><a href="#">Возврат товара</a></li>
+								<li><a href="#">Доставка</a></li>
+								<li><a href="#">Политика конфиденциальности</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -50,7 +50,7 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Связаться с нами</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
@@ -74,7 +74,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-12">
 							<div class="left">
-								<p>Copyright © {{date('Y')}} <a href="https://github.com/Prajwal100" target="_blank">Prajwal Rai</a>  -  All Rights Reserved.</p>
+								<p>Copyright © {{date('Y')}} <a href="https://github.com/Valerismaill" target="_blank">Viko-Group</a>  -  Все права защищены.</p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-12">

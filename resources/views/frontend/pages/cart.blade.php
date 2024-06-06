@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','Cart Page')
+@section('title','Страница корзины')
 @section('main-content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -8,8 +8,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="{{('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="">Cart</a></li>
+							<li><a href="{{('home')}}">Главная<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="">Корзина</a></li>
 						</ul>
 					</div>
 				</div>
@@ -27,11 +27,11 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>PRODUCT</th>
-								<th>NAME</th>
-								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">QUANTITY</th>
-								<th class="text-center">TOTAL</th>
+								<th>Товар</th>
+								<th>Название</th>
+								<th class="text-center">Цена за единицу</th>
+								<th class="text-center">Количество</th>
+								<th class="text-center">ИТОГО</th>
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
@@ -67,7 +67,7 @@
 												</div>
 												<!--/ End Input Order -->
 											</td>
-											<td class="total-amount cart_single_price" data-title="Total"><span class="money">${{$cart['amount']}}</span></td>
+											<td class="total-amount cart_single_price" data-title="Total"><span class="money">{{$cart['amount']}} BR</span></td>
 
 											<td class="action" data-title="Remove"><a href="{{route('cart-delete',$cart->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 										</tr>
@@ -79,13 +79,13 @@
 										<td></td>
 										<td></td>
 										<td class="float-right">
-											<button class="btn float-right" type="submit">Update</button>
+											<button class="btn float-right" type="submit">Обновить</button>
 										</td>
 									</track>
 								@else
 										<tr>
 											<td class="text-center">
-												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
+											Нет товара в корзине <a href="{{route('product-grids')}}" style="color:blue;">Продолжить покупки</a>
 
 											</td>
 										</tr>
@@ -107,25 +107,25 @@
 									<div class="coupon">
 									<form action="{{route('coupon-store')}}" method="POST">
 											@csrf
-											<input name="code" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
+											<input name="code" placeholder="Введите свой купон">
+											<button class="btn">Применить</button>
 										</form>
 									</div>
 									{{-- <div class="checkbox">`
 										@php
 											$shipping=DB::table('shippings')->where('status','active')->limit(1)->get();
 										@endphp
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> Shipping</label>
+										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> Доставка</label>
 									</div> --}}
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">Cart Subtotal<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
+										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">Промежуточная сумма корзины<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
 
 										@if(session()->has('coupon'))
-										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
+										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">Вы экономите<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
 										@endif
 										@php
 											$total_amount=Helper::totalCartPrice();
@@ -134,14 +134,14 @@
 											}
 										@endphp
 										@if(session()->has('coupon'))
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">Вы платите<span>${{number_format($total_amount,2)}}</span></li>
 										@else
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">Вы платите<span>${{number_format($total_amount,2)}}</span></li>
 										@endif
 									</ul>
 									<div class="button5">
-										<a href="{{route('checkout')}}" class="btn">Checkout</a>
-										<a href="{{route('product-grids')}}" class="btn">Continue shopping</a>
+										<a href="{{route('checkout')}}" class="btn">Оформить заказ</a>
+										<a href="{{route('product-grids')}}" class="btn">Продолжить покупки</a>
 									</div>
 								</div>
 							</div>
@@ -162,8 +162,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<h4>Бесплатная доставка</h4>
+						<p>При заказе на сумму свыше 350 BR</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -171,8 +171,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
+						<h4>Бесплатный возврат</h4>
+						<p>В течение 30 дней</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -180,8 +180,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
+						<h4>Безопасная оплата</h4>
+						<p>100% безопасная оплата</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -189,8 +189,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
+						<h4>Лучшая цена</h4>
+						<p>Гарантированно</p>
 					</div>
 					<!-- End Single Service -->
 				</div>

@@ -12,7 +12,7 @@
       <!-- Dropdown - Alerts -->
       <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
-          Notifications Center
+          Центр уведомлений
         </h6>
         @foreach(Auth::user()->unreadNotifications as $notification)
     <a class="dropdown-item d-flex align-items-center" target="_blank" href="{{route('admin.notification',$notification->id)}}">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="small text-gray-500">{{$notification->created_at->format('F d, Y h:i A')}}</div>
+                    <div class="small text-gray-500">{{$notification->created_at->format('F d, Y h:i ')}}</div>
                     <span class="@if($notification->unread()) font-weight-bold @else small text-gray-500 @endif">{{$notification->data['title']}}</span>
                 </div>
             </a>
@@ -33,6 +33,6 @@
             @endif
         @endforeach
 
-        <a class="dropdown-item text-center small text-gray-500" href="{{route('all.notification')}}">Show All Notifications</a>
+        <a class="dropdown-item text-center small text-gray-500" href="{{route('all.notification')}}">Показать все уведомления</a>
       </div>
 </div>

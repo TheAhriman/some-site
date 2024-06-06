@@ -6,17 +6,17 @@
        @include('backend.layouts.notification')
     </div>
   </div>
-  <h5 class="card-header">Messages</h5>
+  <h5 class="card-header">Сообщения</h5>
   <div class="card-body">
     @if(count($messages)>0)
     <table class="table message-table" id="message-dataTable">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Subject</th>
-          <th scope="col">Date</th>
-          <th scope="col">Action</th>
+          <th scope="col">№</th>
+          <th scope="col">Имя</th>
+          <th scope="col">Тема</th>
+          <th scope="col">Дата</th>
+          <th scope="col">Действия</th>
         </tr>
       </thead>
       <tbody>
@@ -28,11 +28,11 @@
           <td>{{$message->subject}}</td>
           <td>{{$message->created_at->format('F d, Y h:i A')}}</td>
           <td>
-            <a href="{{route('message.show',$message->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
+            <a href="{{route('message.show',$message->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="просмотр" data-placement="bottom"><i class="fas fa-eye"></i></a>
             <form method="POST" action="{{route('message.destroy',[$message->id])}}">
               @csrf 
               @method('delete')
-                  <button class="btn btn-danger btn-sm dltBtn" data-id={{$message->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                  <button class="btn btn-danger btn-sm dltBtn" data-id={{$message->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="удалить"><i class="fas fa-trash-alt"></i></button>
             </form>
           </td>
         </tr>
@@ -44,7 +44,7 @@
       {{$messages->links()}}
     </nav>
     @else
-      <h2>Messages Empty!</h2>
+      <h2>Сообщений нету!</h2>
     @endif
   </div>
 </div>
@@ -102,8 +102,8 @@
             // alert(dataID);
             e.preventDefault();
             swal({
-                  title: "Are you sure?",
-                  text: "Once deleted, you will not be able to recover this data!",
+                  title: "Вы уверены?",
+                  text: "После удаления, данные восстановить будет невозможным!",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -112,7 +112,7 @@
                   if (willDelete) {
                     form.submit();
                   } else {
-                      swal("Your data is safe!");
+                      swal("Ваши данные в безопасности!");
                   }
               });
         })

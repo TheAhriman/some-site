@@ -9,7 +9,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Order Lists</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">Список заказов</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -17,28 +17,28 @@
         <table class="table table-bordered" id="order-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>S.N.</th>
-              <th>Order No.</th>
-              <th>Name</th>
+              <th>№</th>
+              <th>Номер заказа</th>
+              <th>Имя</th>
               <th>Email</th>
-              <th>Quantity</th>
-              <th>Charge</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>Количество</th>
+              <th>Стоимость </th>
+              <th>Общая сумма</th>
+              <th>Статус</th>
+              <th>Действия</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Order No.</th>
-              <th>Name</th>
+            <th>№</th>
+              <th>Номер заказа</th>
+              <th>Имя</th>
               <th>Email</th>
-              <th>Quantity</th>
-              <th>Charge</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>Количество</th>
+              <th>Стоимость </th>
+              <th>Общая сумма</th>
+              <th>Статус</th>
+              <th>Действия</th>
               </tr>
           </tfoot>
           <tbody>
@@ -66,12 +66,12 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('order.show',$order->id)}}" class="btn btn-warning btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
-                        <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('order.show',$order->id)}}" class="btn btn-warning btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="просмотр" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                        <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="изменить" data-placement="bottom"><i class="fas fa-edit"></i></a>
                         <form method="POST" action="{{route('order.destroy',[$order->id])}}">
                           @csrf 
                           @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$order->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$order->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="удалить"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>  
@@ -80,7 +80,7 @@
         </table>
         <span style="float:right">{{$orders->links()}}</span>
         @else
-          <h6 class="text-center">No orders found!!! Please order some products</h6>
+          <h6 class="text-center">Заказов пока что нету!</h6>
         @endif
       </div>
     </div>
@@ -136,8 +136,8 @@
               // alert(dataID);
               e.preventDefault();
               swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
+                title: "Вы уверены?",
+                    text: "После удаления, данные восстановить будет невозможным!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -146,7 +146,7 @@
                     if (willDelete) {
                        form.submit();
                     } else {
-                        swal("Your data is safe!");
+                        swal("Ваши данные в безопасности!");
                     }
                 });
           })
