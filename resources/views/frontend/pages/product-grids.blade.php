@@ -122,6 +122,13 @@
                                         @endforeach
                                     </ul>
                                 </div>
+                            <div class="single-widget category">
+                                <h3 class="title">Colors</h3>
+                                    @foreach($colors as $color)
+                                        <label>{{$color->name}}</label>
+                                        <input type="checkbox" name="colors[]" value="{{$color->id}}">
+                                    @endforeach
+                            </div>
                                 <!--/ End Single Widget -->
                         </div>
                     </div>

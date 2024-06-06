@@ -11,7 +11,6 @@ class ShippingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -22,7 +21,6 @@ class ShippingController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -33,7 +31,6 @@ class ShippingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -43,7 +40,7 @@ class ShippingController extends Controller
             'status'=>'required|in:active,inactive'
         ]);
         $data=$request->all();
-        // return $data;
+
         $status=Shipping::create($data);
         if($status){
             request()->session()->flash('success','Shipping successfully created');
@@ -69,7 +66,6 @@ class ShippingController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -85,7 +81,6 @@ class ShippingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -96,7 +91,7 @@ class ShippingController extends Controller
             'status'=>'required|in:active,inactive'
         ]);
         $data=$request->all();
-        // return $data;
+
         $status=$shipping->fill($data)->save();
         if($status){
             request()->session()->flash('success','Shipping successfully updated');
@@ -111,7 +106,6 @@ class ShippingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
@@ -128,6 +122,7 @@ class ShippingController extends Controller
         }
         else{
             request()->session()->flash('error','Shipping not found');
+
             return redirect()->back();
         }
     }

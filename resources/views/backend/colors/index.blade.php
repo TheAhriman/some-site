@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','E-SHOP || Comment Page')
+
 @section('main-content')
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
@@ -9,64 +9,59 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Comment Lists</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">color Lists</h6>
+      <a href="{{route('colors.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add color</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        @if(count($comments)>0)
-        <table class="table table-bordered" id="order-dataTable" width="100%" cellspacing="0">
+        @if(count($colors)>0)
+        <table class="table table-bordered" id="color-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>S.N.</th>
-              <th>Author</th>
-              <th>Post Title</th>
-              <th>Message</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Action</th>
+                <th>S.N.</th>
+                <th>Name</th>
+                <th>Photo</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>S.N.</th>
-              <th>Author</th>
-              <th>Post Title</th>
-              <th>Message</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>Name</th>
+              <th>Photo</th>
             </tr>
           </tfoot>
           <tbody>
-            @foreach($comments as $comment)
+
+            @foreach($colors as $color)
                 <tr>
-                    <td>{{$comment->id}}</td>
-                    <td>{{$comment?->user_info->name}}</td>
-                    <td>{{$comment->post->title}}</td>
-                    <td>{{$comment->comment}}</td>
-                    <td>{{$comment->created_at->format('M d D, Y g: i a')}}</td>
+                    <td>{{$color->id}}</td>
+                    <td>{{$color->name}}</td>
                     <td>
-                        @if($comment->status=='active')
-                          <span class="badge badge-success">{{$comment->status}}</span>
+                        @if($color->path)
+                            @php
+                              $photo=explode(',',$color->path);
+                              // dd($photo);
+                            @endphp
+                            <img src="{{$photo[0]}}" class="img-fluid zoom" style="max-width:80px" alt="{{$color->photo}}">
                         @else
-                          <span class="badge badge-warning">{{$comment->status}}</span>
+                            <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid" style="max-width:80px" alt="avatar.png">
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('comment.edit',$comment->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                        <form method="POST" action="{{route('comment.destroy',[$comment->id])}}">
-                          @csrf
-                          @method('delete')
-                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$comment->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                        <a href="{{route('colors.edit',$color->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                    <form method="POST" action="{{route('colors.destroy',[$color->id])}}">
+                      @csrf
+                      @method('delete')
+                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$color->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$comments->links()}}</span>
+        <span style="float:right">{{$colors->links()}}</span>
         @else
-          <h6 class="text-center">No post comments found!!!</h6>
+          <h6 class="text-center">No colors found!!! Please create color</h6>
         @endif
       </div>
     </div>
@@ -79,6 +74,13 @@
   <style>
       div.dataTables_wrapper div.dataTables_paginate{
           display: none;
+      }
+      .zoom {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom:hover {
+        transform: scale(5);
       }
   </style>
 @endpush
@@ -94,11 +96,12 @@
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
 
-      $('#order-dataTable').DataTable( {
+      $('#color-dataTable').DataTable( {
+        "scrollX": false
             "columnDefs":[
                 {
                     "orderable":false,
-                    "targets":[5,6]
+                    "targets":[10,11,12]
                 }
             ]
         } );

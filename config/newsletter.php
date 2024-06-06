@@ -7,13 +7,18 @@ return [
      * You may use "log" or "null" to prevent calling the
      * API directly from your environment.
      */
-    'driver' => env('MAILCHIMP_DRIVER', 'api'),
+    'driver' => env('MAILCHIMP_DRIVER', Spatie\Newsletter\Drivers\MailChimpDriver::class),
 
     /*
      * The API key of a MailChimp account. You can find yours at
      * https://us10.admin.mailchimp.com/account/api-key-popup/.
      */
     'apiKey' => env('MAILCHIMP_APIKEY'),
+    'driver_arguments' => [
+        'api_key' => env('MAILCHIMP_APIKEY'),
+
+        'endpoint' => null,
+    ],
 
     /*
      * The listName to use when no listName has been specified in a method.

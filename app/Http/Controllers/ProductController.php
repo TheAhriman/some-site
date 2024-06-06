@@ -63,6 +63,7 @@ class ProductController extends Controller
         ]);
 
         $data=$request->all();
+        dd($data['photo']);
         $slug=Str::slug($request->title);
         $count=Product::where('slug',$slug)->count();
         if($count>0){
@@ -176,7 +177,7 @@ class ProductController extends Controller
     {
         $product=Product::findOrFail($id);
         $status=$product->delete();
-        
+
         if($status){
             request()->session()->flash('success','Product successfully deleted');
         }

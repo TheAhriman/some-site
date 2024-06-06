@@ -6,7 +6,7 @@
     <h5 class="card-header">Add Shipping</h5>
     <div class="card-body">
       <form method="post" action="{{route('shipping.store')}}">
-        {{csrf_field()}}
+        @csrf
         <div class="form-group">
           <label for="inputTitle" class="col-form-label">Type <span class="text-danger">*</span></label>
         <input id="inputTitle" type="text" name="type" placeholder="Enter title"  value="{{old('type')}}" class="form-control">
@@ -22,7 +22,7 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
         </div>
-        
+
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">

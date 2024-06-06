@@ -1,16 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Validation\ValidationException;
+
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -21,7 +26,6 @@ class UsersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -73,27 +77,25 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
     public function edit($id)
     {
-        $user=User::findOrFail($id);
-        return view('backend.users.edit')->with('user',$user);
+        return view('backend.users.edit')->with('user', User::findOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, $id)
     {
-        $user=User::findOrFail($id);
+        $user = User::findOrFail($id);
         $this->validate($request,
         [
             'name'=>'string|required|max:30',
@@ -102,17 +104,17 @@ class UsersController extends Controller
             'status'=>'required|in:active,inactive',
             'photo'=>'nullable|string',
         ]);
-        // dd($request->all());
-        $data=$request->all();
+        $data = $request->all();
         // dd($data);
-        
-        $status=$user->fill($data)->save();
-        if($status){
+
+        $status = $user->fill($data)->save();
+        if ($status) {
             request()->session()->flash('success','Successfully updated');
         }
         else{
             request()->session()->flash('error','Error occured while updating');
         }
+
         return redirect()->route('users.index');
 
     }
@@ -121,7 +123,6 @@ class UsersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
