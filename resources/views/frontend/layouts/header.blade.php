@@ -22,7 +22,7 @@
                     <div class="right-content">
                         <ul class="list-main">
                         <li><i class="ti-location-pin"></i> <a href="{{route('order.track')}}">Отследить заказ</a></li>
-                            {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
+                            {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Ежедневные предложения</a></li> --}}
                             @auth 
                                 @if(Auth::user()->role=='admin')
                                     <li><i class="ti-user"></i> <a href="{{route('admin')}}"  target="_blank">Админ</a></li>
@@ -32,7 +32,7 @@
                                 <li><i class="ti-power-off"></i> <a href="{{route('user.logout')}}">Выйти</a></li>
 
                             @else
-                                <li><i class="ti-power-off"></i><a href="{{route('login.form')}}">Login /</a> <a href="{{route('register.form')}}">Регистрация</a></li>
+                                <li><i class="ti-power-off"></i><a href="{{route('login.form')}}">Авторизация /</a> <a href="{{route('register.form')}}">Регистрация</a></li>
                             @endauth
                         </ul>
                     </div>
@@ -120,14 +120,14 @@
                                                         <a href="{{route('wishlist-delete',$data->id)}}" class="remove" title="Удалить эту позицию"><i class="fa fa-remove"></i></a>
                                                         <a class="cart-img" href="#"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></a>
                                                         <h4><a href="{{route('product-detail',$data->product['slug'])}}" target="_blank">{{$data->product['title']}}</a></h4>
-                                                        <p class="quantity">{{$data->quantity}} x - <span class="amount">${{number_format($data->price,2)}}</span></p>
+                                                        <p class="quantity">{{$data->quantity}} x - <span class="amount">{{number_format($data->price,2)}}BR</span></p>
                                                     </li>
                                             @endforeach
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
                                             <span>Итого</span>
-                                            <span class="total-amount">${{number_format(Helper::totalWishlistPrice(),2)}}</span>
+                                            <span class="total-amount">{{number_format(Helper::totalWishlistPrice(),2)}}BR</span>
                                         </div>
                                         <a href="{{route('cart')}}" class="btn animate">Cart</a>
                                     </div>
@@ -157,14 +157,14 @@
                                                         <a href="{{route('cart-delete',$data->id)}}" class="remove" title="Удалить эту позицию"><i class="fa fa-remove"></i></a>
                                                         <a class="cart-img" href="#"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></a>
                                                         <h4><a href="{{route('product-detail',$data->product['slug'])}}" target="_blank">{{$data->product['title']}}</a></h4>
-                                                        <p class="quantity">{{$data->quantity}} x - <span class="amount">${{number_format($data->price,2)}}</span></p>
+                                                        <p class="quantity">{{$data->quantity}} x - <span class="amount">{{number_format($data->price,2)}}BR</span></p>
                                                     </li>
                                             @endforeach
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">
                                             <span>Итого</span>
-                                            <span class="total-amount">${{number_format(Helper::totalCartPrice(),2)}}</span>
+                                            <span class="total-amount">{{number_format(Helper::totalCartPrice(),2)}}BR</span>
                                         </div>
                                         <a href="{{route('checkout')}}" class="btn animate">Checkout</a>
                                     </div>

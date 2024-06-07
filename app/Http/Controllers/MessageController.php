@@ -117,10 +117,10 @@ class MessageController extends Controller
         $message=Message::find($id);
         $status=$message->delete();
         if($status){
-            request()->session()->flash('success','Successfully deleted message');
+            request()->session()->flash('success','Успешно удаленное сообщение');
         }
         else{
-            request()->session()->flash('error','Error occurred please try again');
+            request()->session()->flash('error','Произошла ошибка, пожалуйста, повторите попытку');
         }
         return back();
     }

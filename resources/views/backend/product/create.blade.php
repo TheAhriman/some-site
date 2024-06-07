@@ -77,10 +77,15 @@
           <label for="size">Размер</label>
           <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
               <option value="">--Выберите размер--</option>
-              <option value="S">Small (S)</option>
-              <option value="M">Medium (M)</option>
-              <option value="L">Large (L)</option>
-              <option value="XL">Extra Large (XL)</option>
+              <option value="S1">300 * 260</option>
+							<option value="S2">300 * 270</option>
+							<option value="S3">200 * 270</option>
+							<option value="S4">140 * 220</option>
+							<option value="S5">140 * 225</option>
+							<option value="S6">140 * 160</option>
+							<option value="S7">200 * 245</option>
+							<option value="S8">200 * 160</option>
+							<option value="S9">200 * 245</option>
           </select>
         </div>
      

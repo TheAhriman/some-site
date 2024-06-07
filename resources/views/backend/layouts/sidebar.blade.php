@@ -15,7 +15,7 @@
     <li class="nav-item active">
       <a class="nav-link" href="{{route('admin')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Панель</span></a>
     </li>
 
     <!-- Divider -->
@@ -31,7 +31,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('file-manager')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Media Manager</span></a>
+            <span>Медиа-менеджер</span></a>
     </li>
 
     <li class="nav-item">
@@ -114,7 +114,7 @@
     </li>
 
     {{-- Colors --}}
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#colorCollapse" aria-expanded="true" aria-controls="colorsCollapse">
           <i class="fas fa-truck"></i>
           <span>Colors</span>
@@ -126,7 +126,7 @@
             <a class="collapse-item" href="{{route('colors.create')}}">Add color</a>
           </div>
         </div>
-    </li>
+    </li> -->
 
     <!--Orders -->
     <li class="nav-item">
@@ -168,7 +168,7 @@
     </li>
 
      <!-- Category -->
-     <li class="nav-item">
+     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#postCategoryCollapse" aria-expanded="true" aria-controls="postCategoryCollapse">
           <i class="fas fa-sitemap fa-folder"></i>
           <span>Category</span>
@@ -180,7 +180,7 @@
             <a class="collapse-item" href="{{route('post-category.create')}}">Add Category</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Tags
     <li class="nav-item">
@@ -201,7 +201,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('comment.index')}}">
             <i class="fas fa-comments fa-chart-area"></i>
-            <span>Comments</span>
+            <span>Комментарии</span>
         </a>
       </li>
 

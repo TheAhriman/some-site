@@ -11,7 +11,7 @@
                     <div class="bread-inner">
                         <ul class="bread-list">
                             <li><a href="{{route('home')}}">Главная<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">Register</a></li>
+                            <li class="active"><a href="javascript:void(0);">Регистрация</a></li>
                         </ul>
                     </div>
                 </div>

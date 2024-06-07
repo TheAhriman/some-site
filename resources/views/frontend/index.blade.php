@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','E-SHOP || HOME PAGE')
+@section('title','VIKO-Group || Главная')
 @section('main-content')
 <!-- Slider Area -->
 @if(count($banners)>0)
@@ -17,18 +17,18 @@
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="wow fadeInDown">{{$banner->title}}</h1>
                         <p>{!! html_entity_decode($banner->description) !!}</p>
-                        <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Shop Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
+                        <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Купить сейчас<i class="far fa-arrow-alt-circle-right"></i></i></a>
                     </div>
                 </div>
             @endforeach
         </div>
         <a class="carousel-control-prev" href="#Gslider" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Предыдущий</span>
         </a>
         <a class="carousel-control-next" href="#Gslider" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Следующий</span>
         </a>
     </section>
 @endif
@@ -55,7 +55,7 @@
                                 @endif
                                 <div class="content">
                                     <h3>{{$cat->title}}</h3>
-                                        <a href="{{route('product-cat',$cat->slug)}}">Discover Now</a>
+                                        <a href="{{route('product-cat',$cat->slug)}}">Открыть </a>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Trending Item</h2>
+                        <h2>Трендовый товары</h2>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                                 @endphp
                                 @if($categories)
                                 <button class="btn" style="background:black"data-filter="*">
-                                    All Products
+                                    Все товары
                                 </button>
                                     @foreach($categories as $key=>$cat)
 
@@ -117,24 +117,24 @@
                                                 <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                 <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                 @if($product->stock<=0)
-                                                    <span class="out-of-stock">Sale out</span>
+                                                    <span class="out-of-stock">Распродажа</span>
                                                 @elseif($product->condition=='new')
                                                     <span class="new">New</span
                                                 @elseif($product->condition=='hot')
                                                     <span class="hot">Hot</span>
                                                 @else
-                                                    <span class="price-dec">{{$product->discount}}% Off</span>
+                                                    <span class="price-dec">{{$product->discount}}% Скидка</span>
                                                 @endif
 
 
                                             </a>
                                             <div class="button-head">
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрая покупка</span></a>
+                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Добавить в избранное</span></a>
                                                 </div>
                                                 <div class="product-action-2">
-                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Добавить в корзину</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,8 +144,8 @@
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
+                                                <span>{{number_format($after_discount,2)}}BR</span>
+                                                <del style="padding-left:4%;">{{number_format($product->price,2)}}BR</del>
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                             <div class="content">
                                 <p>{{$data->cat_info['title']}}</p>
                                 <h3>{{$data->title}} <br>Up to<span> {{$data->discount}}%</span></h3>
-                                <a href="{{route('product-detail',$data->slug)}}">Shop Now</a>
+                                <a href="{{route('product-detail',$data->slug)}}">Купить сейчас</a>
                             </div>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Hot Item</h2>
+                    <h2>Hot товары</h2>
                 </div>
             </div>
         </div>
@@ -224,22 +224,22 @@
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">
-                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Быстрая покупка</span></a>
+                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Добавить в избранное</span></a>
                                     </div>
                                     <div class="product-action-2">
-                                        <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        <a href="{{route('add-to-cart',$product->slug)}}">Добавить в корзину</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
                                 <div class="product-price">
-                                    <span class="old">${{number_format($product->price,2)}}</span>
+                                    <span class="old">{{number_format($product->price,2)}}BR</span>
                                     @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
-                                    <span>${{number_format($after_discount,2)}}</span>
+                                    <span>{{number_format($after_discount,2)}}BR</span>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +261,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="shop-section-title">
-                            <h1>Latest Items</h1>
+                            <h1>Новинки</h1>
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
                                         <h4 class="title"><a href="#">{{$product->title}}</a></h4>
-                                        <p class="price with-discount">${{number_format($product->discount,2)}}</p>
+                                        <p class="price with-discount">{{number_format($product->discount,2)}}BR</p>
                                     </div>
                                 </div>
                                 </div>
@@ -309,7 +309,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>From Our Blog</h2>
+                    <h2>Из нашего блога</h2>
                 </div>
             </div>
         </div>
@@ -323,7 +323,7 @@
                             <div class="content">
                                 <p class="date">{{$post->created_at->format('d M , Y. D')}}</p>
                                 <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title}}</a>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Continue Reading</a>
+                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Продолжить чтение</a>
                             </div>
                         </div>
                         <!-- End Single Blog  -->
@@ -344,8 +344,8 @@
                 <!-- Start Single Service -->
                 <div class="single-service">
                     <i class="ti-rocket"></i>
-                    <h4>Free shiping</h4>
-                    <p>Orders over $100</p>
+                    <h4>Бесплатная доставка</h4>
+						<p>При заказе на сумму свыше 350 BR</p>
                 </div>
                 <!-- End Single Service -->
             </div>
@@ -353,8 +353,8 @@
                 <!-- Start Single Service -->
                 <div class="single-service">
                     <i class="ti-reload"></i>
-                    <h4>Free Return</h4>
-                    <p>Within 30 days returns</p>
+                    <h4>Бесплатный возврат</h4>
+						<p>В течение 30 дней</p>
                 </div>
                 <!-- End Single Service -->
             </div>
@@ -362,8 +362,8 @@
                 <!-- Start Single Service -->
                 <div class="single-service">
                     <i class="ti-lock"></i>
-                    <h4>Sucure Payment</h4>
-                    <p>100% secure payment</p>
+                    <h4>Безопасная оплата</h4>
+						<p>100% безопасная оплата</p>
                 </div>
                 <!-- End Single Service -->
             </div>
@@ -371,8 +371,8 @@
                 <!-- Start Single Service -->
                 <div class="single-service">
                     <i class="ti-tag"></i>
-                    <h4>Best Peice</h4>
-                    <p>Guaranteed price</p>
+                    <h4>Лучшая цена</h4>
+						<p>Гарантированно </p>
                 </div>
                 <!-- End Single Service -->
             </div>
@@ -438,16 +438,16 @@
                                             </div>
                                             <div class="quickview-stock">
                                                 @if($product->stock >0)
-                                                <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
+                                                <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} В наличии</span>
                                                 @else
-                                                <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+                                                <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} Нет в наличии</span>
                                                 @endif
                                             </div>
                                         </div>
                                         @php
                                             $after_discount=($product->price-($product->price*$product->discount)/100);
                                         @endphp
-                                        <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                        <h3><small><del class="text-muted">{{number_format($product->price,2)}}BR</del></small>    {{number_format($after_discount,2)}}BR </h3>
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>
@@ -455,7 +455,7 @@
                                             <div class="size">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
-                                                        <h5 class="title">Size</h5>
+                                                        <h5 class="title">Размер</h5>
                                                         <select>
                                                             @php
                                                             $sizes=explode(',',$product->size);
@@ -467,12 +467,12 @@
                                                         </select>
                                                     </div>
                                                     {{-- <div class="col-lg-6 col-12">
-                                                        <h5 class="title">Color</h5>
+                                                        <h5 class="title">Цвет</h5>
                                                         <select>
-                                                            <option selected="selected">orange</option>
-                                                            <option>purple</option>
-                                                            <option>black</option>
-                                                            <option>pink</option>
+                                                            <option selected="selected">бежевый</option>
+                                                            <option>бордовый</option>
+                                                            <option>белый</option>
+                                                            <option>серый</option>
                                                         </select>
                                                     </div> --}}
                                                 </div>
@@ -499,7 +499,7 @@
                                                 <!--/ End Input Order -->
                                             </div>
                                             <div class="add-to-cart">
-                                                <button type="submit" class="btn">Add to cart</button>
+                                                <button type="submit" class="btn">Добавить в корзину</button>
                                                 <a href="{{route('add-to-wishlist',$product->slug)}}" class="btn min"><i class="ti-heart"></i></a>
                                             </div>
                                         </form>

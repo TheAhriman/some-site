@@ -393,10 +393,10 @@ class FrontendController extends Controller
         $data = $request->all();
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 'active'])) {
             Session::put('user', $data['email']);
-            request()->session()->flash('success', 'Successfully login');
+            request()->session()->flash('success', 'Вход выполнен успешно');
             return redirect()->route('home');
         } else {
-            request()->session()->flash('error', 'Invalid email and password pleas try again!');
+            request()->session()->flash('error', 'Неверный адрес электронной почты или пароль. Пожалуйста, попробуйте снова!');
             return redirect()->back();
         }
     }
@@ -405,7 +405,7 @@ class FrontendController extends Controller
     {
         Session::forget('user');
         Auth::logout();
-        request()->session()->flash('success', 'Logout successfully');
+        request()->session()->flash('success', 'Успешный выход из системы');
         return back();
     }
 
@@ -427,10 +427,10 @@ class FrontendController extends Controller
         $check = $this->create($data);
         Session::put('user', $data['email']);
         if ($check) {
-            request()->session()->flash('success', 'Successfully registered');
+            request()->session()->flash('success', 'Регистрация прошла успешно');
             return redirect()->route('home');
         } else {
-            request()->session()->flash('error', 'Please try again!');
+            request()->session()->flash('error', 'Пожалуйста, попробуйте снова!');
             return back();
         }
     }
@@ -456,14 +456,14 @@ class FrontendController extends Controller
         if (!Newsletter::isSubscribed($request->email)) {
             Newsletter::subscribePending($request->email);
             if (Newsletter::lastActionSucceeded()) {
-                request()->session()->flash('success', 'Subscribed! Please check your email');
+                request()->session()->flash('success', 'Подписка оформлена! Пожалуйста, проверьте свою электронную почту');
                 return redirect()->route('home');
             } else {
                 Newsletter::getLastError();
-                return back()->with('error', 'Something went wrong! please try again');
+                return back()->with('error', 'Что-то пошло не так! Пожалуйста, попробуйте снова');
             }
         } else {
-            request()->session()->flash('error', 'Already Subscribed');
+            request()->session()->flash('error', 'Уже подписан');
             return back();
         }
     }

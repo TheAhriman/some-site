@@ -64,9 +64,9 @@ class CategoryController extends Controller
         $data['is_parent'] = $request->input('is_parent',0);
 
         if (Category::create($data)) {
-            request()->session()->flash('success','Category successfully added');
+            request()->session()->flash('success','Категория успешно добавлена');
         } else {
-            request()->session()->flash('error','Error occurred, Please try again!');
+            request()->session()->flash('error','Произошла ошибка. Пожалуйста, попробуйте снова!');
         }
 
         return redirect()->route('category.index');
@@ -120,9 +120,9 @@ class CategoryController extends Controller
         $data['is_parent'] = $request->input('is_parent', 0);
         $status = $category->fill($data)->save();
         if ($status) {
-            request()->session()->flash('success','Category successfully updated');
+            request()->session()->flash('success','Категория успешно обновлена');
         } else {
-            request()->session()->flash('error','Error occurred, Please try again!');
+            request()->session()->flash('error','Произошла ошибка. Пожалуйста, попробуйте снова!');
         }
 
         return redirect()->route('category.index');
@@ -142,10 +142,10 @@ class CategoryController extends Controller
             if (count($child_cat_id) > 0) {
                 Category::shiftChild($child_cat_id);
             }
-            request()->session()->flash('success','Category successfully deleted');
+            request()->session()->flash('success','Категория успешно удалена');
         }
         else {
-            request()->session()->flash('error','Error while deleting category');
+            request()->session()->flash('error','Ошибка при удалении категории');
         }
 
         return redirect()->route('category.index');

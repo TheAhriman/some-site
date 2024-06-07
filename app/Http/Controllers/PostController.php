@@ -68,8 +68,8 @@ class PostController extends Controller
         $data['tags'] = $tags ? implode(',', $tags) : '';
 
         Post::create($data)
-            ? request()->session()->flash('success','Post Successfully added')
-            : request()->session()->flash('error','Please try again!!');
+            ? request()->session()->flash('success','Сообщение успешно добавлено')
+            : request()->session()->flash('error','Пожалуйста, попробуйте снова!!');
 
         return redirect()->route('post.index');
     }
@@ -128,8 +128,8 @@ class PostController extends Controller
         $data['tags'] = !empty($request->input('tags')) ? implode(',', $tags) : '';
 
         $post->fill($data)->save()
-            ? request()->session()->flash('success','Post Successfully updated')
-            : request()->session()->flash('error','Please try again!!');
+            ? request()->session()->flash('success','Сообщение успешно обновлено')
+            : request()->session()->flash('error','Пожалуйста, попробуйте снова!!');
 
         return redirect()->route('post.index');
     }
@@ -144,8 +144,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $post->delete()
-            ? request()->session()->flash('success','Post successfully deleted')
-            : request()->session()->flash('error','Error while deleting post ');
+            ? request()->session()->flash('success','Сообщение успешно удалено')
+            : request()->session()->flash('error','Ошибка при удалении записи ');
 
         return redirect()->route('post.index');
     }

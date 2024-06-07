@@ -102,7 +102,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}}BR</del>   ${{number_format($org,2)}}  </p>
+                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}}BR</del>   {{number_format($org,2)}}BR  </p>
 
                                             </div>
                                         </div>
@@ -122,13 +122,13 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            <div class="single-widget category">
+                            <!-- <div class="single-widget category">
                                 <h3 class="title">Colors</h3>
                                     @foreach($colors as $color)
                                         <label>{{$color->name}}</label>
                                         <input type="checkbox" name="colors[]" value="{{$color->id}}">
                                     @endforeach
-                            </div>
+                            </div> -->
                                 <!--/ End Single Widget -->
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
+                                                <span>{{number_format($after_discount,2)}}BR</span>
                                                 <del style="padding-left:4%;">{{number_format($product->price,2)}}BR</del>
                                             </div>
                                         </div>
@@ -292,7 +292,7 @@
                                             @php
                                                 $after_discount=($product->price-($product->price*$product->discount)/100);
                                             @endphp
-                                            <h3><small><del class="text-muted">{{number_format($product->price,2)}}BR</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                            <h3><small><del class="text-muted">{{number_format($product->price,2)}}BR</del></small>    {{number_format($after_discount,2)}}BR  </h3>
                                             <div class="quickview-peragraph">
                                                 <p>{!! html_entity_decode($product->summary) !!}</p>
                                             </div>

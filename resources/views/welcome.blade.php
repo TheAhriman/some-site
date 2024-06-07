@@ -68,12 +68,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Главная</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Авторизация</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Регистрация</a>
                         @endif
                     @endauth
                 </div>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laravel.com/docs">Документация</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
@@ -101,7 +101,7 @@
 
 <!DOCTYPE html>
 <head>
-  <title>Pusher Test</title>
+  <title>Тест Pusher</title>
   <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
   <script>
 
@@ -119,9 +119,9 @@
   </script>
 </head>
 <body>
-  <h1>Pusher Test</h1>
+  <h1>Тест Pusher</h1>
   <p>
-    Try publishing an event to channel <code>my-channel</code>
-    with event name <code>my-event</code>.
+  Попробуйте опубликовать событие в канал <code>my-channel</code>
+  с именем события <code>my-event</code>.
   </p>
 </body>

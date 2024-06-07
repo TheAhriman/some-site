@@ -18,13 +18,13 @@ class CartController extends Controller
     public function addToCart(Request $request){
         // dd($request->all());
         if (empty($request->slug)) {
-            request()->session()->flash('error','Invalid Products');
+            request()->session()->flash('error','Недействительные товары');
             return back();
         }
         $product = Product::where('slug', $request->slug)->first();
         // return $product;
         if (empty($product)) {
-            request()->session()->flash('error','Invalid Products');
+            request()->session()->flash('error','Недействительные товары');
             return back();
         }
 
@@ -35,7 +35,7 @@ class CartController extends Controller
             $already_cart->quantity = $already_cart->quantity + 1;
             $already_cart->amount = $product->price+ $already_cart->amount;
             // return $already_cart->quantity;
-            if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error','Stock not sufficient!.');
+            if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error','Недостаточное количество на складе!.');
             $already_cart->save();
 
         }else{
@@ -46,11 +46,11 @@ class CartController extends Controller
             $cart->price = ($product->price-($product->price*$product->discount)/100);
             $cart->quantity = 1;
             $cart->amount=$cart->price*$cart->quantity;
-            if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error','Stock not sufficient!.');
+            if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error','Недостаточно товара на складе!.');
             $cart->save();
             $wishlist=Wishlist::where('user_id',auth()->user()->id)->where('cart_id',null)->update(['cart_id'=>$cart->id]);
         }
-        request()->session()->flash('success','Product successfully added to cart');
+        request()->session()->flash('success','Товар успешно добавлен в корзину');
         return back();
     }
 
@@ -64,10 +64,10 @@ class CartController extends Controller
 
         $product = Product::where('slug', $request->slug)->first();
         if($product->stock <$request->quant[1]){
-            return back()->with('error','Out of stock, You can add other products.');
+            return back()->with('error','Нет в наличии. Вы можете добавить другие товары..');
         }
         if ( ($request->quant[1] < 1) || empty($product) ) {
-            request()->session()->flash('error','Invalid Products');
+            request()->session()->flash('error','Недействительные товары');
             return back();
         }
 
@@ -80,7 +80,7 @@ class CartController extends Controller
             // $already_cart->price = ($product->price * $request->quant[1]) + $already_cart->price ;
             $already_cart->amount = ($product->price * $request->quant[1])+ $already_cart->amount;
 
-            if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error','Stock not sufficient!.');
+            if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0) return back()->with('error','Недостаточное количество на складе!.');
 
             $already_cart->save();
 
@@ -92,11 +92,11 @@ class CartController extends Controller
             $cart->price = ($product->price-($product->price*$product->discount)/100);
             $cart->quantity = $request->quant[1];
             $cart->amount=($product->price * $request->quant[1]);
-            if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error','Stock not sufficient!.');
+            if ($cart->product->stock < $cart->quantity || $cart->product->stock <= 0) return back()->with('error','Недостаточное количество на складе!.');
             // return $cart;
             $cart->save();
         }
-        request()->session()->flash('success','Product successfully added to cart.');
+        request()->session()->flash('success','товар успешно добавлен в корзину.');
         return back();
     }
 
@@ -104,10 +104,12 @@ class CartController extends Controller
         $cart = Cart::find($request->id);
         if ($cart) {
             $cart->delete();
-            request()->session()->flash('success','Cart successfully removed');
+            request()->session()->flash('success','Ошибка. Пожалуйста, попробуйте еще раз');
             return back();
         }
-        request()->session()->flash('error','Error please try again');
+        request()->session()->flash('error','Ошибка. Пожалуйста, попробуйте снова."
+
+Error');
         return back();
     }
 
@@ -127,7 +129,7 @@ class CartController extends Controller
                     // return $quant;
 
                     if($cart->product->stock < $quant){
-                        request()->session()->flash('error','Out of stock');
+                        request()->session()->flash('error','Нет в наличии');
                         return back();
                     }
                     $cart->quantity = ($cart->product->stock > $quant) ? $quant  : $cart->product->stock;
@@ -138,14 +140,14 @@ class CartController extends Controller
                     $cart->amount = $after_price * $quant;
                     // return $cart->price;
                     $cart->save();
-                    $success = 'Cart successfully updated!';
+                    $success = 'Корзина успешно обновлена!';
                 }else{
-                    $error[] = 'Cart Invalid!';
+                    $error[] = 'Недействительная корзина!';
                 }
             }
             return back()->with($error)->with('success', $success);
         }else{
-            return back()->with('Cart Invalid!');
+            return back()->with('Недействительная корзина!');
         }
     }
 

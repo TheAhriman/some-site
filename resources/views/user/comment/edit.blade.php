@@ -4,28 +4,28 @@
 
 @section('main-content')
 <div class="card">
-  <h5 class="card-header">Comment Edit</h5>
+  <h5 class="card-header">Редактировать комментарий</h5>
   <div class="card-body">
     <form action="{{route('user.post-comment.update',$comment->id)}}" method="POST">
       @csrf
       @method('PATCH')
       <div class="form-group">
-        <label for="name">By:</label>
+        <label for="name">От:</label>
         <input type="text" disabled class="form-control" value="{{$comment->user_info->name}}">
       </div>
       <div class="form-group">
-        <label for="comment">comment</label>
+        <label for="comment">Комментарий</label>
       <textarea name="comment" id="" cols="20" rows="10" class="form-control">{{$comment->comment}}</textarea>
       </div>
       <div class="form-group">
-        <label for="status">Status :</label>
+        <label for="status">Статус :</label>
         <select name="status" id="" class="form-control">
-          <option value="">--Select Status--</option>
-          <option value="active" {{(($comment->status=='active')? 'selected' : '')}}>Active</option>
-          <option value="inactive" {{(($comment->status=='inactive')? 'selected' : '')}}>Inactive</option>
+          <option value="">--Выбрать статус--</option>
+          <option value="active" {{(($comment->status=='active')? 'selected' : '')}}>Активный</option>
+          <option value="inactive" {{(($comment->status=='inactive')? 'selected' : '')}}>Неактивный</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" class="btn btn-primary">Обновть</button>
     </form>
   </div>
 </div>

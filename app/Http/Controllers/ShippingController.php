@@ -43,10 +43,10 @@ class ShippingController extends Controller
 
         $status=Shipping::create($data);
         if($status){
-            request()->session()->flash('success','Shipping successfully created');
+            request()->session()->flash('success','Доставка успешно создана');
         }
         else{
-            request()->session()->flash('error','Error, Please try again');
+            request()->session()->flash('error','Ошибка, пожалуйста, повторите попытку');
         }
         return redirect()->route('shipping.index');
     }
@@ -71,7 +71,7 @@ class ShippingController extends Controller
     {
         $shipping=Shipping::find($id);
         if(!$shipping){
-            request()->session()->flash('error','Shipping not found');
+            request()->session()->flash('error','Доставка не найдена');
         }
         return view('backend.shipping.edit')->with('shipping',$shipping);
     }
@@ -94,10 +94,10 @@ class ShippingController extends Controller
 
         $status=$shipping->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Shipping successfully updated');
+            request()->session()->flash('success','Доставка успешно обновлена');
         }
         else{
-            request()->session()->flash('error','Error, Please try again');
+            request()->session()->flash('error','Ошибка, пожалуйста, повторите попытку');
         }
         return redirect()->route('shipping.index');
     }
@@ -113,15 +113,15 @@ class ShippingController extends Controller
         if($shipping){
             $status=$shipping->delete();
             if($status){
-                request()->session()->flash('success','Shipping successfully deleted');
+                request()->session()->flash('success','Доставка успешно удалена');
             }
             else{
-                request()->session()->flash('error','Error, Please try again');
+                request()->session()->flash('error','Ошибка, пожалуйста, повторите попытку');
             }
             return redirect()->route('shipping.index');
         }
         else{
-            request()->session()->flash('error','Shipping not found');
+            request()->session()->flash('error','Доставка не найдена');
 
             return redirect()->back();
         }

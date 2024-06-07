@@ -109,9 +109,9 @@ class PayPalController extends Controller
         Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => session()->get('id')]);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            request()->session()->flash('success','You successfully pay from Paypal! Thank You');
+            request()->session()->flash('success','Ваша  оплата успешно прошла! Спасибо');
         } else {
-            request()->session()->flash('error','Something went wrong please try again!!!');
+            request()->session()->flash('error','Что-то пошло не так. Пожалуйста, попробуйте еще раз!!!');
         }
         return redirect()->route('home');
     }

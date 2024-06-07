@@ -32,9 +32,9 @@ class ColorsController extends Controller
         $data = $request->validated();
 
         if (Color::query()->create($data)) {
-            request()->session()->flash('success','Color successfully created');
+            request()->session()->flash('success','Цвет успешно создан');
         } else {
-            request()->session()->flash('error','Error, Please try again');
+            request()->session()->flash('error','Ошибка. Пожалуйста, попробуйте снова');
         }
 
         return redirect()->route('colors.index');
@@ -65,9 +65,9 @@ class ColorsController extends Controller
         data_forget($data, '*.file');
 
         if (Color::query()->find($id)->update($data)) {
-            request()->session()->flash('success', 'Color successfully updated');
+            request()->session()->flash('success', 'Цвет успешно обновлен');
         } else {
-            request()->session()->flash('error', 'Error, Please try again');
+            request()->session()->flash('error', 'Ошибка, пожалуйста, попробуйте снова');
         }
 
         return redirect()->route('colors.index');
@@ -80,12 +80,12 @@ class ColorsController extends Controller
     {
         if ($colors = Color::query()->find($id)) {
             !empty($colors->delete())
-                ? request()->session()->flash('success','Color successfully deleted')
-                : request()->session()->flash('error','Error, Please try again');
+                ? request()->session()->flash('success','Цвет успешно обновлен')
+                : request()->session()->flash('error','Ошибка, пожалуйста, попробуйте снова');
 
             return redirect()->route('colors.index');
         }
-        request()->session()->flash('error','Color not found');
+        request()->session()->flash('error','Цвет не найден');
 
         return redirect()->back();
     }

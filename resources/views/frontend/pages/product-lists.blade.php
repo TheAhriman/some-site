@@ -12,7 +12,7 @@
 						<div class="bread-inner">
 							<ul class="bread-list">
 								<li><a href="{{route('home')}}">Главная<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="javascript:void(0);">Shop List</a></li>
+								<li class="active"><a href="javascript:void(0);">Список товаров</a></li>
 							</ul>
 						</div>
 					</div>
@@ -79,7 +79,7 @@
 											@endphp
 											<div id="slider-range" data-min="0" data-max="{{$max}}"></div>
 											<div class="product_filter">
-											<button type="submit" class="filter_button">Filter</button>
+											<button type="submit" class="filter_button">Фильтр</button>
 											<div class="label-input">
 												<span>Диапазон:</span>
 												<input style="" type="text" id="amount" readonly/>
@@ -90,20 +90,20 @@
 									</div>
 									{{-- <ul class="check-box-list">
 										<li>
-											<label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - 50 BR<span class="count">(3)</span></label>
+											<label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">20 - 50 BR<span class="count">(3)</span></label>
 										</li>
 										<li>
-											<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - 100 BR<span class="count">(5)</span></label>
+											<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">50 - 100 BR<span class="count">(5)</span></label>
 										</li>
 										<li>
-											<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - 250 BR<span class="count">(8)</span></label>
+											<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">100 - 250 BR<span class="count">(8)</span></label>
 										</li>
 									</ul> --}}
 								</div>
 								<!--/ End Shop By Price -->
                                 <!-- Single Widget -->
                                 <div class="single-widget recent-post">
-                                    <h3 class="title">Recent post</h3>
+                                    <h3 class="title">Последняя статья/h3>
                                     {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
@@ -119,7 +119,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">${{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>
+                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}}BR</del>   {{number_format($org,2)}}BR  </p>
                                             </div>
                                         </div>
                                         <!-- End Single Post -->
@@ -138,13 +138,13 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <div class="single-widget category">
-                                    <h3 class="title">Colors</h3>
+                                <!-- <div class="single-widget category">
+                                    <h3 class="title">Цвет</h3>
                                     @foreach($colors as $color)
                                         <label>{{$color->name}}</label>
                                         <input type="checkbox" name="colors[]" value="{{$color->id}}">
                                     @endforeach
-                                </div>
+                                </div> -->
                                 <!--/ End Single Widget -->
                         	</div>
 						</div>
@@ -168,10 +168,10 @@
 												<label>Сортировать :</label>
 												<select class='sortBy' name='sortBy' onchange="this.form.submit();">
 													<option value="">По умолчанию</option>
-													<option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>Name</option>
-													<option value="price" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='price') selected @endif>Price</option>
-													<option value="category" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='category') selected @endif>Category</option>
-													<option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>Brand</option>
+													<option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>По название</option>
+													<option value="price" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='price') selected @endif>По цене</option>
+													<option value="category" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='category') selected @endif>По категориям</option>
+													<option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>По брендам</option>
 												</select>
 											</div>
 										</div>
@@ -219,8 +219,8 @@
 																@php
 																	$after_discount=($product->price-($product->price*$product->discount)/100);
 																@endphp
-																<span>${{number_format($after_discount,2)}}</span>
-																<del>${{number_format($product->price,2)}}</del>
+																<span>{{number_format($after_discount,2)}}BR</span>
+																<del>{{number_format($product->price,2)}}BR</del>
 															</div>
 															<h3 class="title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
 														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
@@ -312,7 +312,7 @@
 												@php
 													$after_discount=($product->price-($product->price*$product->discount)/100);
 												@endphp
-												<h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+												<h3><small><del class="text-muted{{number_format($product->price,2)}}BR</del></small>    {{number_format($after_discount,2)}}BR  </h3>
 												<div class="quickview-peragraph">
 													<p>{!! html_entity_decode($product->summary) !!}</p>
 												</div>

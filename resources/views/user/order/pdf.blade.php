@@ -83,18 +83,18 @@
   </div>
   <div class="invoice-description">
     <div class="invoice-left-top float-left">
-      <h6>Invoice to</h6>
+      <h6>Счёт на</h6>
        <h3>{{$order->first_name}} {{$order->last_name}}</h3>
        <div class="address">
         <p>
-          <strong>Country: </strong>
+          <strong>Город: </strong>
           {{$order->country}}
         </p>
         <p>
-          <strong>Address: </strong>
+          <strong>Адрес: </strong>
           {{ $order->address1 }} OR {{ $order->address2}}
         </p>
-         <p><strong>Phone:</strong> {{ $order->phone }}</p>
+         <p><strong>Телефон:</strong> {{ $order->phone }}</p>
          <p><strong>Email:</strong> {{ $order->email }}</p>
        </div>
     </div>
@@ -107,14 +107,14 @@
   </div>
   <section class="order_details pt-3">
     <div class="table-header">
-      <h5>Order Details</h5>
+      <h5>Детали заказа</h5>
     </div>
     <table class="table table-bordered table-stripe">
       <thead>
         <tr>
-          <th scope="col" class="col-6">Product</th>
-          <th scope="col" class="col-3">Quantity</th>
-          <th scope="col" class="col-3">Total</th>
+          <th scope="col" class="col-6">Товар</th>
+          <th scope="col" class="col-3">Количество</th>
+          <th scope="col" class="col-3">Итого</th>
         </tr>
       </thead>
       <tbody>
@@ -129,34 +129,34 @@
               @endforeach
             </span></td>
           <td>x{{$cart->quantity}}</td>
-          <td><span>${{number_format($cart->price,2)}}</span></td>
+          <td><span>{{number_format($cart->price,2)}}BR</span></td>
         </tr>
       @endforeach
       </tbody>
       <tfoot>
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right">Subtotal:</th>
-          <th scope="col"> <span>${{number_format($order->sub_total,2)}}</span></th>
+          <th scope="col" class="text-right">Промежуточная сумма:</th>
+          <th scope="col"> <span>{{number_format($order->sub_total,2)}}BR</span></th>
         </tr>
       {{-- @if(!empty($order->coupon))
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right">Discount:</th>
+          <th scope="col" class="text-right">Скидка:</th>
           <th scope="col"><span>-{{$order->coupon->discount(Helper::orderPrice($order->id, $order->user->id))}}{{Helper::base_currency()}}</span></th>
         </tr>
       @endif --}}
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right ">Shipping:</th>
-          <th><span>${{number_format($order->delivery_charge,2)}}</span></th>
+          <th scope="col" class="text-right ">Доставка:</th>
+          <th><span>{{number_format($order->delivery_charge,2)}}BR</span></th>
         </tr>
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right">Total:</th>
+          <th scope="col" class="text-right">Итого:</th>
           <th>
             <span>
-                ${{number_format($order->total_amount,2)}}
+                {{number_format($order->total_amount,2)}}BR
             </span>
           </th>
         </tr>
@@ -164,15 +164,15 @@
     </table>
   </section>
   <div class="thanks mt-3">
-    <h4>Thank you for your business !!</h4>
+    <h4>Спасибо за ваше сотрудничество !!</h4>
   </div>
   <div class="authority float-right mt-5">
     <p>-----------------------------------</p>
-    <h5>Authority Signature:</h5>
+    <h5>Подпись:</h5>
   </div>
   <div class="clearfix"></div>
 @else
-  <h5 class="text-danger">Invalid</h5>
+  <h5 class="text-danger">недействительный</h5>
 @endif
 </body>
 </html>

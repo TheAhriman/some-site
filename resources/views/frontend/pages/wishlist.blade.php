@@ -46,7 +46,7 @@
 											<p class="product-name"><a href="{{route('product-detail',$wishlist->product['slug'])}}">{{$wishlist->product['title']}}</a></p>
 											<p class="product-des">{!!($wishlist['summary']) !!}</p>
 										</td>
-										<td class="total-amount" data-title="Total"><span>${{$wishlist['amount']}}</span></td>
+										<td class="total-amount" data-title="Total"><span>{{$wishlist['amount']}}BR</span></td>
 										<td><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>Add To Cart</a></td>
 										<td class="action" data-title="Remove"><a href="{{route('wishlist-delete',$wishlist->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 									</tr>
@@ -173,16 +173,21 @@
 									<div class="size">
 										<div class="row">
 											<div class="col-lg-6 col-12">
-												<h5 class="title">Size</h5>
+												<h5 class="title">Размер</h5>
 												<select>
-													<option selected="selected">s</option>
-													<option>m</option>
-													<option>l</option>
-													<option>xl</option>
+													<option selected="selected">300 * 260</option>
+													<option>300 * 270</option>
+													<option>200 * 270</option>
+													<option>140 * 220</option>
+													<option>140 * 225</option>
+													<option>140 * 160</option>
+													<option>200 * 245</option>
+													<option>200 * 160</option>
+													<option>200 * 245</option>
 												</select>
 											</div>
 											<div class="col-lg-6 col-12">
-												<h5 class="title">Color</h5>
+												<h5 class="title">Цвет</h5>
 												<select>
 													<option selected="selected">orange</option>
 													<option>purple</option>
@@ -210,12 +215,12 @@
 										<!--/ End Input Order -->
 									</div>
 									<div class="add-to-cart">
-										<a href="#" class="btn">Add to cart</a>
+										<a href="#" class="btn">Добавить в корзину</a>
 										<a href="#" class="btn min"><i class="ti-heart"></i></a>
 										<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
 									</div>
                                     <div class="default-social">
-										<h4 class="share-now">Share:</h4>
+										<h4 class="share-now">Поделиться:</h4>
                                         <ul>
                                             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>

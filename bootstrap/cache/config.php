@@ -197,7 +197,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/framework/cache/data',
+        'path' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -274,7 +274,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'pizdecblyat',
+        'database' => 'viko-group',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -282,11 +282,11 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => '127.0.0.1:3325',
         'port' => '3306',
-        'database' => 'pizdecblyat',
+        'database' => 'viko-group',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -302,11 +302,11 @@
       array (
         'driver' => 'pgsql',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => '127.0.0.1:3325',
         'port' => '3306',
-        'database' => 'pizdecblyat',
+        'database' => 'viko-group',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -317,11 +317,11 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => '127.0.0.1:3325',
         'port' => '3306',
-        'database' => 'pizdecblyat',
+        'database' => 'viko-group',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -339,7 +339,7 @@
       'default' => 
       array (
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => '127.0.0.1:3325',
         'password' => NULL,
         'port' => '6379',
         'database' => '0',
@@ -347,7 +347,7 @@
       'cache' => 
       array (
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => '127.0.0.1:3325',
         'password' => NULL,
         'port' => '6379',
         'database' => '1',
@@ -363,12 +363,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/app',
+        'root' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/app/public',
+        'root' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\app/public',
         'url' => '/storage',
         'visibility' => 'public',
       ),
@@ -385,7 +385,7 @@
     ),
     'links' => 
     array (
-      '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/public/storage' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/app/public',
+      'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\public\\storage' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -500,13 +500,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/logs/laravel.log',
+        'path' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/logs/laravel.log',
+        'path' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -556,7 +556,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/logs/laravel.log',
+        'path' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -613,7 +613,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/resources/views/vendor/mail',
+        0 => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -751,7 +751,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/framework/sessions',
+    'files' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -771,9 +771,9 @@
   array (
     'paths' => 
     array (
-      0 => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/resources/views',
+      0 => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\resources\\views',
     ),
-    'compiled' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/framework/views',
+    'compiled' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -782,10 +782,10 @@
     'convert_entities' => true,
     'options' => 
     array (
-      'font_dir' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/fonts',
-      'font_cache' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10/storage/fonts',
-      'temp_dir' => '/tmp',
-      'chroot' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10',
+      'font_dir' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\fonts',
+      'font_cache' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site\\storage\\fonts',
+      'temp_dir' => 'C:\\Users\\leron\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site',
       'allowed_protocols' => 
       array (
         'file://' => 
@@ -934,7 +934,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => '/home/scarycolony/PhpstormProjects/Complete-Ecommerce-in-laravel-10',
+    'remote_sites_path' => 'C:\\Users\\leron\\OneDrive\\Рабочий стол\\site',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

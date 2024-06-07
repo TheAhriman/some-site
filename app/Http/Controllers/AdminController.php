@@ -40,10 +40,10 @@ class AdminController extends Controller
         $data=$request->all();
         $status=$user->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Successfully updated your profile');
+            request()->session()->flash('success','Профиль успешно обновлен');
         }
         else{
-            request()->session()->flash('error','Please try again!');
+            request()->session()->flash('error','Пожалуйста, попробуйте снова!');
         }
         return redirect()->back();
     }
@@ -70,10 +70,10 @@ class AdminController extends Controller
         // return $settings;
         $status=$settings->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Setting successfully updated');
+            request()->session()->flash('success','Настройки успешно обновлены');
         }
         else{
-            request()->session()->flash('error','Please try again');
+            request()->session()->flash('error','Пожалуйста, попробуйте снова');
         }
         return redirect()->route('admin');
     }
@@ -126,7 +126,7 @@ class AdminController extends Controller
             //Regenerate the storage link folder
             try{
                 Artisan::call('storage:link');
-                request()->session()->flash('success', 'Successfully storage linked.');
+                request()->session()->flash('success', 'Хранилище успешно связано.');
                 return redirect()->back();
             }
             catch(\Exception $exception){
@@ -137,7 +137,7 @@ class AdminController extends Controller
         else{
             try{
                 Artisan::call('storage:link');
-                request()->session()->flash('success', 'Successfully storage linked.');
+                request()->session()->flash('success', 'Хранилище успешно подключено.');
                 return redirect()->back();
             }
             catch(\Exception $exception){

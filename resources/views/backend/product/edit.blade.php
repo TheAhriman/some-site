@@ -86,10 +86,17 @@
                 $data=explode(',',$item->size);
                 // dd($data);
                 @endphp
-              <option value="S"  @if( in_array( "S",$data ) ) selected @endif>Small</option>
-              <option value="M"  @if( in_array( "M",$data ) ) selected @endif>Medium</option>
-              <option value="L"  @if( in_array( "L",$data ) ) selected @endif>Large</option>
-              <option value="XL"  @if( in_array( "XL",$data ) ) selected @endif>Extra Large</option>
+              <option value="S1"  @if( in_array( "S1",$data ) ) selected @endif>300 * 260</option>
+              <option value="M2"  @if( in_array( "S2",$data ) ) selected @endif>300 * 270</option>
+              <option value="S3"  @if( in_array( "S3",$data ) ) selected @endif>200 * 270</option>
+              <option value="S4"  @if( in_array( "S4",$data ) ) selected @endif>140 * 220</option>
+              <option value="S5"  @if( in_array( "S5",$data ) ) selected @endif>140 * 225</option>
+              <option value="MS6"  @if( in_array( "S6",$data ) ) selected @endif>140 * 160</option>
+              <option value="S7"  @if( in_array( "S7",$data ) ) selected @endif>200 * 245</option>
+              <option value="S8"  @if( in_array( "S8",$data ) ) selected @endif>200 * 160</option>
+              <option value="S9"  @if( in_array( "S9",$data ) ) selected @endif>200 * 245</option>
+
+              
               @endforeach
           </select>
         </div>
